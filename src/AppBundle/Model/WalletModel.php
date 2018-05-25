@@ -8,11 +8,13 @@
 
 namespace AppBundle\Model;
 
+use AppBundle\Config\Config;
+
 class WalletModel
 {
     public static function getAllWalletsData($em)
     {
-        $sql = "SELECT w.id, w.wtype, w.num, c.worth FROM wallet w LEFT JOIN coin c ON w.cid = c.id";
+        $sql = "SELECT w.id, w.wtype, w.num, w.cid, c.worth FROM wallet w LEFT JOIN coin c ON w.cid = c.id";
         $stmt = $em->getConnection()->prepare($sql);
         $stmt->execute();
         $data = $stmt->fetchAll();
@@ -20,11 +22,11 @@ class WalletModel
         $vm_wallet = [];
         $user_wallet = [];
         foreach ($data as $d){
-            if( $d['wtype'] == 0 ){
+            if( $d['wtype'] == Config::VM_WALLET ){
                 $vm_wallet[] = [ 'worth'=>$d['worth'], 'num'=>$d['num'] ];
             }
             else{
-                $user_wallet[] = [ 'worth'=>$d['worth'], 'num'=>$d['num'] ];
+                $user_wallet[] = [ 'worth'=>$d['worth'], 'num'=>$d['num'], 'cid'=>$d['cid'] ];
             }
         }
 

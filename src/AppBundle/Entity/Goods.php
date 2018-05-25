@@ -29,7 +29,7 @@ class Goods
     private $name;
 
     /**
-     * @ORM\Column(type="decimal", scale=2)
+     * @ORM\Column(type="smallint")
      */
     private $price;
 
