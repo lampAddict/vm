@@ -23,12 +23,12 @@ class MoneyModel
 
         if( $d['num'] > 0 && $d['worth'] == $sum ){
 
-            //decrease num of user corresponding coins
+            //decrease num of user coins
             $sql = "UPDATE wallet w SET num = " . ($d['num'] - 1) . " WHERE w.id = '" . $d['id'] . "'";
             $stmt = $em->getConnection()->prepare($sql);
             $stmt->execute();
 
-            //increase num of vm corresponding coins
+            //increase num of vm coins
             $sql = "UPDATE wallet w SET num = num + 1 WHERE w.cid = '" . $d['cid'] . "' AND wtype = " . Config::VM_WALLET;
             $stmt = $em->getConnection()->prepare($sql);
             $stmt->execute();

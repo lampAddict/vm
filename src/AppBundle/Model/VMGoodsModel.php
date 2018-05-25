@@ -47,7 +47,7 @@ class VMGoodsModel
                 $stmt = $em->getConnection()->prepare($sql);
                 $stmt->execute();
 
-                //decrease cash value
+                //decrease vm cash amount
                 $money->setSum( $cash - $d['price'] );
 
                 $em->persist($money);
