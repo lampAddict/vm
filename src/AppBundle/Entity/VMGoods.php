@@ -29,7 +29,7 @@ class VMGoods
     private $gid;
 
     /**
-     * @ORM\Column(type="decimal")
+     * @ORM\Column(type="integer")
      */
     private $num;
 

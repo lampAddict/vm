@@ -29,12 +29,12 @@ class Wallet
     private $wtype;
 
     /**
-     * @ORM\Column(type="decimal", scale=2)
+     * @ORM\Column(type="integer")
      */
     private $cid;
 
     /**
-     * @ORM\Column(type="decimal")
+     * @ORM\Column(type="integer")
      */
     private $num;
 

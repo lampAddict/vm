@@ -24,7 +24,7 @@ class Coin
     private $id;
 
     /**
-     * @ORM\Column(type="decimal", scale=2)
+     * @ORM\Column(type="smallint")
      */
     private $worth;
 
