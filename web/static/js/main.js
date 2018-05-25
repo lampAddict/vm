@@ -2,7 +2,8 @@
 $( document ).ready(function(){
 
     var $cashIn = $("#balance"),
-        cash = parseInt($cashIn.val())|0
+        cash = parseInt($cashIn.val())|0,
+        $message = $("#status")
     ;
 
     //put in cash
@@ -52,8 +53,7 @@ $( document ).ready(function(){
 
         var gid = $(this).attr("data-good"),
             price = parseInt($(this).attr("data-price"))|0,
-            $num =  $('#vm'+gid),
-            $message = $("#status")
+            $num =  $('#vm'+gid)
         ;
 
         if( cash >= price ){
@@ -101,17 +101,24 @@ $( document ).ready(function(){
         .done(function( response ){
             if( response.result ){
 
-                //update number of coins in vm wallet
                 var data = response.data;
                 for(var i=0; i<data.length; i++){
                     if( data[i]['num'] > 0 ){
+
+                        //update number of coins in user wallet
                         $uc = $('#uw'+data[i]['cid']);
                         $uc.text( parseInt($uc.text()) + data[i]['num'] );
+
+                        //update number of coins in vm wallet
+                        $vmc = $('#vmw'+data[i]['cid']);
+                        $vmc.text( parseInt($vmc.text()) - data[i]['num'] );
                     }
                 }
 
                 //update cash amount in vm
                 $cashIn.val(0);
+
+                cash = 0;
 
                 $message.text('');
             }

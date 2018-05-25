@@ -28,6 +28,11 @@ class MoneyModel
             $stmt = $em->getConnection()->prepare($sql);
             $stmt->execute();
 
+            //increase num of vm corresponding coins
+            $sql = "UPDATE wallet w SET num = num + 1 WHERE w.cid = '" . $d['cid'] . "' AND wtype = " . Config::VM_WALLET;
+            $stmt = $em->getConnection()->prepare($sql);
+            $stmt->execute();
+
             //update sum of cash in vm
             /* @var $money \AppBundle\Entity\MoneySpent */
             $money = $em->getRepository('AppBundle:MoneySpent')->findOneBy(['id'=>1]);
@@ -95,7 +100,7 @@ class MoneyModel
             $cid[] = $c['cid'];
         }
         $sql = rtrim($sql, ', ');
-        $sql .= ' WHERE cid IN ('.join(',',$cid).') AND  wtype = ' . Config::USER_WALLET;
+        $sql .= ' WHERE cid IN ('.join(',',$cid).') AND wtype = ' . Config::USER_WALLET;
 
         $stmt = $em->getConnection()->prepare($sql);
         $stmt->execute();
@@ -110,7 +115,7 @@ class MoneyModel
             $cid[] = $c['cid'];
         }
         $sql = rtrim($sql, ', ');
-        $sql .= ' WHERE cid IN ('.join(',',$cid).') AND  wtype = ' . Config::VM_WALLET;
+        $sql .= ' WHERE cid IN ('.join(',',$cid).') AND wtype = ' . Config::VM_WALLET;
 
         $stmt = $em->getConnection()->prepare($sql);
         $stmt->execute();
