@@ -40,7 +40,7 @@
                         {% for coin in vm_wallet %}
                             <tr>
                                 <td>{{ coin.worth }}</td>
-                                <td>{{ coin.num }}</td>
+                                <td id="vmw{{ coin.cid }}">{{ coin.num }}</td>
                             </tr>
                         {% endfor %}
                     </table>

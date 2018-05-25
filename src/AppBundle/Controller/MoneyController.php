@@ -30,4 +30,18 @@ class MoneyController extends Controller
 
         return new JsonResponse(['result'=>$result]);
     }
+
+    /**
+     * @Route("/get-money-back", name="get_money_back")
+     */
+    public function getMoneyBackAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $sum = intval($request->request->get('amount'));
+
+        $res = MoneyModel::getMoneyBack($em, $sum);
+
+        return new JsonResponse(['result'=>$res['result'], 'data'=>$res['data']]);
+    }
 }

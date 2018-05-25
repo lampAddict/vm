@@ -23,7 +23,7 @@ class WalletModel
         $user_wallet = [];
         foreach ($data as $d){
             if( $d['wtype'] == Config::VM_WALLET ){
-                $vm_wallet[] = [ 'worth'=>$d['worth'], 'num'=>$d['num'] ];
+                $vm_wallet[] = [ 'worth'=>$d['worth'], 'num'=>$d['num'], 'cid'=>$d['cid'] ];
             }
             else{
                 $user_wallet[] = [ 'worth'=>$d['worth'], 'num'=>$d['num'], 'cid'=>$d['cid'] ];
