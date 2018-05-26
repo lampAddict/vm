@@ -9,48 +9,48 @@
 
             <div id="wallets">
                 <div id="customer_wallet">
-                    <h2>Кошелек покупателя</h2>
-                    <p>
-                    <table>
-                        <tr>
-                            <th>Номинал, руб.</th>
-                            <th>Количество, шт.</th>
-                            <th>Действие</th>
-                        </tr>
-                        {% for coin in user_wallet %}
+                    <div class="header">Кошелек покупателя</div>
+                    <div>
+                        <table>
                             <tr>
-                                <td>{{ coin.worth }}</td>
-                                <td id="uw{{ coin.cid }}">{{ coin.num }}</td>
-                                <td>
-                                    <button class="putInCash" data-coin="{{ coin.cid }}" data-worth="{{ coin.worth }}">Внести монету</button>
-                                </td>
+                                <th>Номинал, руб.</th>
+                                <th>Количество, шт.</th>
+                                <th>Действие</th>
                             </tr>
-                        {% endfor %}
-                    </table>
-                    </p>
+                            {% for coin in user_wallet %}
+                                <tr>
+                                    <td>{{ coin.worth }}</td>
+                                    <td id="uw{{ coin.cid }}">{{ coin.num }}</td>
+                                    <td>
+                                        <button class="putInCash" data-coin="{{ coin.cid }}" data-worth="{{ coin.worth }}">Внести монету</button>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
                 </div>
                 <div id="vm_wallet">
-                    <h2>Кошелек торгового автомата</h2>
-                    <p>
-                    <table>
-                        <tr>
-                            <th>Номинал, руб.</th>
-                            <th>Количество, шт.</th>
-                        </tr>
-                        {% for coin in vm_wallet %}
+                    <div class="header">Кошелек торгового автомата</div>
+                    <div>
+                        <table>
                             <tr>
-                                <td>{{ coin.worth }}</td>
-                                <td id="vmw{{ coin.cid }}">{{ coin.num }}</td>
+                                <th>Номинал, руб.</th>
+                                <th>Количество, шт.</th>
                             </tr>
-                        {% endfor %}
-                    </table>
-                    </p>
+                            {% for coin in vm_wallet %}
+                                <tr>
+                                    <td>{{ coin.worth }}</td>
+                                    <td id="vmw{{ coin.cid }}">{{ coin.num }}</td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
                 </div>
             </div>
 
             <div id="goods">
-                <h2>Товары</h2>
-                <p>
+                <div class="header">Товары</div>
+                <div>
                     <table>
                         <tr>
                             <th>Товар</th>
@@ -69,21 +69,21 @@
                             </tr>
                         {% endfor %}
                     </table>
-                </p>
+                </div>
             </div>
 
             <div id="vm_wallet">
-                <h2>Расчеты с покупателем</h2>
-                <p>
-                <table>
-                    <tr>
-                        <td>Внесенная сумма: <input id="balance" readonly type="text" value="{{ cash }}"/>&nbsp;&nbsp;&nbsp;<input id="btn" type="button" value="Сдача"></td>
-                    </tr>
-                    <tr>
-                        <td>Сообщение: <div id="status"></div></td>
-                    </tr>
-                </table>
-                </p>
+                <div class="header">Расчеты с покупателем</div>
+                <div>
+                    <table>
+                        <tr>
+                            <td>Внесенная сумма: <input id="balance" readonly type="text" value="{{ cash }}"/>&nbsp;&nbsp;&nbsp;<input id="btn" type="button" value="Сдача"></td>
+                        </tr>
+                        <tr>
+                            <td>Сообщение: <div id="status"></div></td>
+                        </tr>
+                    </table>
+                </div>
             </div>
 
         </div>
@@ -103,13 +103,16 @@
     th { background-color: lightgray; padding: 5px }
     td { padding: 5px }
     #wrapper { background: #FFF; margin: 1em auto; max-width: 800px; width: 95%; }
-    #container { padding: 2em; }
+    #container { padding: 2em; overflow-y: auto; }
     #status { margin-bottom: 2em; }
     #welcome h1 span { display: block; font-size: 75%; }
 
     #wallets{ float: left; }
     #customer_wallet{ width: 50%; float: left; margin-right: 20px; }
+    #goods{ float: left; }
     #vm_wallet{ width: 45%; float: left; }
+
+    .header{ font-size: 21px; margin-bottom: 8px; margin-top: 24px; font-weight: bold; }
 
     @media (min-width: 768px) {
         #wrapper { width: 80%; margin: 2em auto; }

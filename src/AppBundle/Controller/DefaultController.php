@@ -17,12 +17,11 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-
         $em = $this->getDoctrine()->getManager();
 
         $walletData = WalletModel::getAllWalletsData($em);
         $goodsData  = VMGoodsModel::getAllGoods($em);
-        $cashIn      = MoneyModel::getCash($em);
+        $cashIn     = MoneyModel::getCash($em);
 
         return $this->render('default/index.html.twig', [
             'goods' => $goodsData,

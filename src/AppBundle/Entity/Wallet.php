@@ -9,6 +9,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\Index;
 
 /**
  * @ORM\Entity
@@ -30,6 +31,7 @@ class Wallet
 
     /**
      * @ORM\Column(type="integer")
+     * @ORM\Table(indexes={@ORM\Index(name="coin_id_idx", columns={"cid"})})
      */
     private $cid;
 

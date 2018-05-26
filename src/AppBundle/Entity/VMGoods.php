@@ -9,6 +9,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\Index;
 
 /**
  * @ORM\Entity
@@ -25,6 +26,7 @@ class VMGoods
 
     /**
      * @ORM\Column(type="integer")
+     * @ORM\Table(indexes={@ORM\Index(name="goods_id_idx", columns={"gid"})})
      */
     private $gid;
 
