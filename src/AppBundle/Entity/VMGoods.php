@@ -14,6 +14,7 @@ use Doctrine\ORM\Mapping\Index;
 /**
  * @ORM\Entity
  * @ORM\Table(name="vm_goods")
+ * @ORM\Table(indexes={@ORM\Index(name="goods_id_idx", columns={"gid"})})
  */
 class VMGoods
 {
@@ -26,7 +27,6 @@ class VMGoods
 
     /**
      * @ORM\Column(type="integer")
-     * @ORM\Table(indexes={@ORM\Index(name="goods_id_idx", columns={"gid"})})
      */
     private $gid;
 

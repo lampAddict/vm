@@ -14,6 +14,7 @@ use Doctrine\ORM\Mapping\Index;
 /**
  * @ORM\Entity
  * @ORM\Table(name="wallet")
+ * @ORM\Table(indexes={@ORM\Index(name="coin_id_idx", columns={"cid"})})
  */
 class Wallet
 {
@@ -31,7 +32,6 @@ class Wallet
 
     /**
      * @ORM\Column(type="integer")
-     * @ORM\Table(indexes={@ORM\Index(name="coin_id_idx", columns={"cid"})})
      */
     private $cid;
 
